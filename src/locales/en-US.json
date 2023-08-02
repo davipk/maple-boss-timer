@@ -1,0 +1,26 @@
+{
+    "title": "MapleStory Boss Timer",
+    "screen-share": "Screen Share",
+    "how-to-use": "How to use the timer",
+    "how-to-use-desc-1": "Run MapleStory in windowed mode",
+    "how-to-use-desc-2": "Once clicked, select [MapleStory] to share",
+    "how-to-use-desc-3": "Select either Normal or Hard mode",
+    "how-to-use-desc-4": "Enter Versus Hilla",
+    "pip-mode": "PIP Mode",
+    "screen-preview": "Screen Preview",
+    "browser-not-supported": "This browser is not supported.",
+    "hp-not-recognized": "HP cannot be recognized.",
+    "might-come-late": "Might come in later so please observe the hourglass.",
+    "remaining": "Remaining.",
+    "remaining-hp": "Remaining HP",
+    "remaining-time": "Reamining time",
+    "after": "After",
+    "difficulty": {
+        "normal": "Normal",
+        "hard": "Hard"
+    },
+    "time": {
+        "min": "min",
+        "sec": "sec"
+    }
+}

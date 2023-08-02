@@ -1,0 +1,26 @@
+{
+    "title": "메이플 보스 타이머",
+    "screen-share": "화면 공유",
+    "how-to-use": "사용 방법",
+    "how-to-use-desc-1": "메이플스토리 클라이언트를 창모드로 실행",
+    "how-to-use-desc-2": "눌러서 [창] - [메이플스토리]를 공유",
+    "how-to-use-desc-3": "노말, 하드 중 선택",
+    "how-to-use-desc-4": "진힐라 입장",
+    "pip-mode": "PIP 모드",
+    "screen-preview": "화면 미리보기",
+    "browser-not-supported": "지원하지 않는 브라우저입니다.",
+    "hp-not-recognized": "HP를 인식할 수 없습니다.",
+    "might-come-late": "예상보다 늦게 올 가능성도 있으니 모래시계를 보고 판단하세요.",
+    "remaining": "남았습니다.",
+    "remaining-hp": "남은 체력",
+    "remaining-time": "남은 시간",
+    "after": "후",
+    "difficulty": {
+        "normal": "노말",
+        "hard": "하드"
+    },
+    "time": {
+        "min": "분",
+        "sec": "초"
+    }
+}
