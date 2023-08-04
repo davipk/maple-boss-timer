@@ -32,6 +32,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `;
 
 // Spaghetti starts here
+const outputCanvasBgKR = new URL("./assets/output_canvas_bg_KR.png", import.meta.url).href;
+const outputCanvasBgEN = new URL("./assets/output_canvas_bg_EN.png", import.meta.url).href;
 const monitoringButton = document.getElementById("monitoring_button") as HTMLButtonElement;
 const monitoring = document.getElementById("monitoring") as HTMLDivElement;
 const streamingButton = document.getElementById("streaming_button") as HTMLButtonElement;
@@ -43,7 +45,7 @@ const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 const outputCanvas = document.getElementById("output_canvas") as HTMLCanvasElement;
 const outputCtx = outputCanvas.getContext("2d") as CanvasRenderingContext2D;
 const outputCanvasBg = new Image();
-outputCanvasBg.src = new URL("./assets/output_canvas_bg.png", import.meta.url).href;
+outputCanvasBg.src = i18n.locale.includes("ko") ? outputCanvasBgKR : outputCanvasBgEN;
 const unmuteImg = new Image();
 unmuteImg.src = new URL("./assets/unmute_img.png", import.meta.url).href;
 const muteImg = new Image();
