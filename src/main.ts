@@ -1,4 +1,5 @@
 import "./style.css";
+import outputCanvasBgENUrl from "./assets/output_canvas_bg_EN.png";
 import koKR from "./locales/ko-KR.json";
 import enUS from "./locales/en-US.json";
 import { SpeechManager } from "./main/speech";
@@ -43,7 +44,7 @@ const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 const outputCanvas = document.getElementById("output_canvas") as HTMLCanvasElement;
 const outputCtx = outputCanvas.getContext("2d") as CanvasRenderingContext2D;
 const outputCanvasBg = new Image();
-outputCanvasBg.src = new URL("./assets/output_canvas_bg.png", import.meta.url).href;
+outputCanvasBg.src = outputCanvasBgENUrl;
 const unmuteImg = new Image();
 unmuteImg.src = new URL("./assets/unmute_img.png", import.meta.url).href;
 const muteImg = new Image();
