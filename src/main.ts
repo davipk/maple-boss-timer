@@ -62,6 +62,7 @@ let time: number | null;
 let hp: number | null;
 
 let isStreaming = false;
+let fmaSoon = false;
 let patternCycles = [
     [180, 150],
     [150, 125, 100],
@@ -190,6 +191,7 @@ function sendStream() {
     const frameBuffer = ctx.getImageData(0, 0, canvas.width, canvas.height).data.buffer;
     worker.postMessage(
         {
+            fmaSoon,
             frameBuffer,
             frameWidth: canvas.width,
             frameHeight: canvas.height,
@@ -256,6 +258,11 @@ function main() {
             if (!hpRect && time > 2 && hp > 2) {
                 speechManager?.speak(i18n.translate("hp-not-recognized"), true);
             } else if (remainingTime > 0) {
+                if (remainingTime <= 10 && !fmaSoon) {
+                    fmaSoon = true;
+                } else if(remainingTime > 10 && fmaSoon) {
+                    fmaSoon = false;
+                }
                 if (remainingTime <= 10) {
                     speechManager?.speak(remainingTime.toString());
                 } else if ((remainingTime < 60 && remainingTime % 10 === 0) || remainingTime % 30 === 0) {

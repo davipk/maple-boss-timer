@@ -30,6 +30,10 @@ export interface IRecvMessage {
 
 export interface ISendMessage {
     /**
+     * Whether or not FMA is expected to happen in 10 seconds.
+     */
+    fmaSoon: boolean;
+    /**
      * The frame buffer of the screen.
      */
     frameBuffer: ArrayBuffer;

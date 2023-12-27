@@ -10,7 +10,7 @@ let timeRectReset = 0;
 let hpRectReset = 0;
 
 self.onmessage = (param: MessageEvent<ISendMessage>) => {
-    const { frameBuffer, frameWidth, frameHeight, timeRect, hpRect } = param.data;
+    const { fmaSoon, frameBuffer, frameWidth, frameHeight, timeRect, hpRect } = param.data;
     const frame = new Uint8Array(frameBuffer);
     let timeArea = timeRect;
     let hpArea = hpRect;
@@ -186,7 +186,7 @@ self.onmessage = (param: MessageEvent<ISendMessage>) => {
                         }
                     }
                     const ratio = count / (frameWidth * frameHeight);
-                    if (ratio > 0.01) {
+                    if (ratio > 0.01 && fmaSoon) {
                         pattern += ratio;
                         if (!patternRect) {
                             patternRect = [];
