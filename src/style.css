@@ -1,53 +1,72 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+#git-last-commit-date {
+  font-size: 10px;
 }
 
 #video {
-  display: none;
+    display: none;
 }
 
 #pip_video {
-  display: none;
+    display: none;
 }
 
 #output_canvas {
-  display: none;
-  margin-top: 25px;
-  background-color: #242424;
+    display: none;
+    margin-top: 25px;
+    background-color: #242424;
 }
 
 #pip_button {
-  display: none;
-  width: 250px;
-  margin-bottom: 25px;
+    display: none;
+    width: 250px;
+    margin-bottom: 25px;
 }
 
 #monitoring {
-  display: none;
+    display: none;
 }
 
 #monitoring_button {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 #canvas {
-  display: none;
-  margin-left: 0;
-  margin-right: auto;
-  max-width: 100%;
-  background-color: #242424;
+    display: none;
+    margin-left: 0;
+    margin-right: auto;
+    max-width: 100%;
+    background-color: #242424;
+}
+
+a:link {
+    color: lightskyblue;
+}
+a:visited {
+    color: #af7ddf;
+}
+a:hover {
+    color: #ffffff;
+}
+a:active {
+    color: #ff4040;
+    text-decoration: none;
+    font-weight: normal;
 }

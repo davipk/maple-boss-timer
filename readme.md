@@ -15,5 +15,7 @@
     <a href="https://github.com/davipk/maple-boss-timer/issues">Report Bug</a>
     ·
     <a href="https://github.com/davipk/maple-boss-timer/issues">Request Feature</a>
+    ·
+    <a href="https://davipk.github.io/maple-boss-timer/">Demo</a>
   </p>
 </div>
