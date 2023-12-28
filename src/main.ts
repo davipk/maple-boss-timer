@@ -16,7 +16,7 @@ i18n.availableLocales = ["en", "ko-KR"];
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <video id="video" autoplay playsinline></video>
   <video id="pip_video" autoplay playsinline></video>
-  <h3>${i18n.translate("how-to-use")}</h3>
+  <h2>${i18n.translate("how-to-use")}</h2>
   <ol>
       <li>${i18n.translate("how-to-use-desc-1")}</li>
       <li><button id="streaming_button">${i18n.translate("screen-share")}</button> ${i18n.translate("how-to-use-desc-2")}</li>
@@ -52,6 +52,9 @@ muteImg.src = new URL("./assets/mute_img.png", import.meta.url).href;
 const synth = window.speechSynthesis;
 const speechManager = synth ? new SpeechManager(synth, i18n.locale) : null;
 
+// Number of milliseconds to throttle each frame
+const throttleRate = 100;
+
 let worker: Worker;
 let timeRect: number[] | null;
 let hpRect: number[] | null;
@@ -74,38 +77,40 @@ let difficulty = 1;
 if (typeof Worker !== undefined && navigator.mediaDevices) {
     worker = new FrameWorker();
     worker.onmessage = (result: MessageEvent<IRecvMessage>) => {
-        const now = Date.now();
-        timeRect = result.data.timeRect;
-        hpRect = result.data.hpRect;
-        timeResult = result.data.time;
-        hpResult = result.data.hp;
-        if (hpResult) {
-            hp = hpResult;
-        }
-        if (timeResult && timeResult != time) {
-            timeStamp = now;
-            time = timeResult;
-        }
-        if (time && hp && result.data.pattern > 0.1) {
-            patternTime = Math.round(time + 2 - (now - timeStamp) / 1000);
-            patternHp = hp;
-        }
-        main();
-        sendStream();
-        ctx.strokeStyle = "#00FF00";
-        ctx.lineWidth = 2;
-        if (timeRect) {
-            ctx.strokeRect(timeRect[0], timeRect[1], timeRect[2], timeRect[3]);
-        }
-        if (hpRect) {
-            ctx.strokeRect(hpRect[0], hpRect[1], hpRect[2], hpRect[3]);
-        }
-        let patternRect = result.data.patternRect;
-        if (patternRect) {
-            for (let i = 0; i < patternRect.length; i++) {
-                ctx.strokeRect(patternRect[i][0], patternRect[i][1], patternRect[i][2], patternRect[i][3]);
+        setTimeout((() => {
+            const now = Date.now();
+            timeRect = result.data.timeRect;
+            hpRect = result.data.hpRect;
+            timeResult = result.data.time;
+            hpResult = result.data.hp;
+            if (hpResult) {
+                hp = hpResult;
             }
-        }
+            if (timeResult && timeResult != time) {
+                timeStamp = now;
+                time = timeResult;
+            }
+            if (time && hp && result.data.pattern > 0.1) {
+                patternTime = Math.round(time + 2 - (now - timeStamp) / 1000);
+                patternHp = hp;
+            }
+            main();
+            sendStream();
+            ctx.strokeStyle = "#00FF00";
+            ctx.lineWidth = 2;
+            if (timeRect) {
+                ctx.strokeRect(timeRect[0], timeRect[1], timeRect[2], timeRect[3]);
+            }
+            if (hpRect) {
+                ctx.strokeRect(hpRect[0], hpRect[1], hpRect[2], hpRect[3]);
+            }
+            let patternRect = result.data.patternRect;
+            if (patternRect) {
+                for (let i = 0; i < patternRect.length; i++) {
+                    ctx.strokeRect(patternRect[i][0], patternRect[i][1], patternRect[i][2], patternRect[i][3]);
+                }
+            }
+        }), throttleRate);
     };
     video.addEventListener("play", sendStream);
     outputCanvas.addEventListener("click", function (e) {
